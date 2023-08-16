@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tanayvaswani/userauth-go/routes"
+	routes "github.com/tanayvaswani/userauth-go/routes"
 )
 
 func main() {
@@ -16,8 +16,8 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
 
-	routes.AuthRoutes()
-	routes.UserRoutes()
+	routes.AuthRoutes(router)
+	routes.UserRoutes(router)
 
 	router.GET("/api-1", func (c *gin.Context) {
 		c.JSON(200, gin.H{"Success":"Access granted for api-1"})
